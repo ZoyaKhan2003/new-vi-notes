@@ -15,6 +15,7 @@ const Login = () =>{
       email,
       password,
     });
+    localStorage.setItem("token", res.data.token);
 
     alert(res.data.msg); // success
     navigate("/home");
@@ -33,6 +34,8 @@ const Login = () =>{
           token: credentialResponse.credential,
         }
       );
+ localStorage.setItem("token", res.data.token);
+
       alert(res.data.msg);
       navigate("/home");
     } catch {
