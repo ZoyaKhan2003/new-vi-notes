@@ -7,9 +7,10 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const handleRegister = async () => {
-    const res = await axios.post("http://localhost:5000/api/auth/register", {
+    const res = await axios.post(`${API}/api/auth/register`, {
       email,
       password,
     });
@@ -19,7 +20,7 @@ const Register = () => {
    const handleGoogle = async (credentialResponse: any) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/google",
+        `${API}/api/auth/google`,
         {
           token: credentialResponse.credential,
         }
